@@ -30,6 +30,7 @@ An application that is designed to help you pass technical interviews. Codele gi
 
 ## STRETCH GOALS
 - Allow users to select difficulty
+- Have data for atleast 30 days of practice
 
 ## Models
 
