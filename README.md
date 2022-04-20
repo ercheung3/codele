@@ -8,7 +8,7 @@ An application that is designed to help you pass technical interviews. Codele gi
 [COMING SOON FRONT END]()\
 [COMING SOON BACK END]()
 
-## Preview of Songlink
+## Preview of Codele
 
 ![COMING SOON]()
 
