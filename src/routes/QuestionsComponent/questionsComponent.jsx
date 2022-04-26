@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { Link, Outlet, useOutletContext } from "react-router-dom";
 
 const QuestionsComponent = () => {
   const questions = useOutletContext();
@@ -7,8 +7,13 @@ const QuestionsComponent = () => {
     <div>
       <h2>ALL QUESTIONS</h2>
       {questions.map((question) => {
-        return <p key={`${question.source}-${question.id}`}>{question.name}</p>;
+        return (
+          <Link to={`${question.id}`} key={`${question.source}-${question.id}`}>
+            {question.name}
+          </Link>
+        );
       })}
+      <Outlet />
     </div>
   );
 };
