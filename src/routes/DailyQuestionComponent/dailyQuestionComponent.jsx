@@ -7,7 +7,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 
 const DailyQuestionComponent = (props) => {
-  const questions = useOutletContext();
+  const [questions, createNewQuestion] = useOutletContext();
   const [dailyQuestion, setDailyQuestion] = useState();
   const selectDailyQuestion = () => {
     //ADD LOGIC TO SELECT NEW QUESTION BASED ON TIME:DAY
@@ -33,28 +33,15 @@ const DailyQuestionComponent = (props) => {
       <h2>DAILY QUESTION</h2>
       {!!dailyQuestion ? (
         <>
-          <div className="daily-question" style={{ whiteSpace: "pre-wrap" }}>
-            {dailyQuestion.text}
-          </div>
-
-          <pre>
-            <div className="daily-question">
-              {
-                "Given an array of integers your solution should find the smallest integer. \n\nFor example:\n\n- Given `[34, 15, 88, 2]` your solution will return `2`\n- Given `[34, -345, -1, 100]` your solution will return `-345`\n\nYou can assume, for the purpose of this kata, that the supplied array will not be empty.\n"
-              }
-            </div>
-          </pre>
-          <div style={{ whiteSpace: "pre-wrap" }}>
-            {`
-      keep formatting
-
-      keep spaces
-
-
-      keep spaces
-   `}
-          </div>
-          <ReactQuill theme="snow" value={dailyQuestion.text} />
+          {dailyQuestion.source.toLowerCase() === "codewars" ? (
+            <div className="daily-question question">{dailyQuestion.text}</div>
+          ) : (
+            <ReactQuill
+              readOnly="true"
+              theme="snow"
+              value={dailyQuestion.text}
+            />
+          )}
         </>
       ) : (
         <Button onClick={selectDailyQuestion}>Show Question</Button>

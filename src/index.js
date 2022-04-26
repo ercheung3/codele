@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import QuestionsComponent from "./routes/QuestionsComponent/questionsComponent";
 import DailyQuestionComponent from "./routes/DailyQuestionComponent/dailyQuestionComponent";
 import QuestionComponent from "./routes/QuestionComponent/questionComponent";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const rootElement = document.getElementById("root");
 render(

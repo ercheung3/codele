@@ -18,6 +18,23 @@ function App() {
       console.log(err);
     }
   };
+
+  const createNewQuestion = async (newQuestion) => {
+    const apiResponse = await fetch(`${websiteURL}`, {
+      method: "POST",
+      body: JSON.stringify(newQuestion),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const parsedResponse = await apiResponse.json();
+    if (apiResponse.status === 201) {
+      setQuestions([...questions, parsedResponse]);
+    } else {
+      console.log(parsedResponse);
+    }
+  };
+
   useEffect(getQuestions, []);
   return (
     <div className="App">
@@ -27,7 +44,7 @@ function App() {
         <Link to="/daily">Daily</Link>
         <Link to="/questions">Questions</Link>
       </nav>
-      <Outlet context={questions} />
+      <Outlet context={[questions, createNewQuestion]} />
     </div>
   );
 }
