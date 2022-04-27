@@ -1,5 +1,7 @@
 import { Link, Outlet, useOutletContext } from "react-router-dom";
 import NewQuestionComponent from "./NewQuestionComponent/newQuestionComponent";
+import "./questionsComponent.css";
+
 const QuestionsComponent = () => {
   const [questions, createNewQuestion] = useOutletContext();
 
@@ -10,18 +12,21 @@ const QuestionsComponent = () => {
         createNewQuestion={createNewQuestion}
       ></NewQuestionComponent>
       <Outlet context={[questions]} />
-      <ul>
+      <ol className="questions-list">
         {questions.map((question) => {
           return (
-            <Link
-              to={`${question.id}`}
-              key={`${question.source}-${question.id}`}
-            >
-              {question.name}
-            </Link>
+            <li>
+              <Link
+                to={`${question.id}`}
+                key={`${question.source}-${question.id}`}
+                className="question-link"
+              >
+                {question.name}
+              </Link>
+            </li>
           );
         })}
-      </ul>
+      </ol>
     </div>
   );
 };

@@ -1,4 +1,9 @@
-.question {
+.question-text {
     display: block;
     white-space: pre-line;
+}
+
+.question-details {
+    display: flex;
+    gap: 1vw;
 }

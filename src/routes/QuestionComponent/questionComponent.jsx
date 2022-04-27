@@ -7,12 +7,31 @@ const QuestionComponent = () => {
   let params = useParams();
   const [questions, createNewQuestion] = useOutletContext();
   const [singleQuestion, setSingleQuestion] = useState();
-
+  const [difficulty, setDifficulty] = useState();
   const showQuestion = () => {
     const question = questions.filter(
       (question) => question.id == params.questionId
     );
     setSingleQuestion(question[0]);
+    switch (singleQuestion.difficulty) {
+      case 1:
+        setDifficulty("Very Easy");
+        break;
+      case 2:
+        setDifficulty("Easy");
+        break;
+      case 3:
+        setDifficulty("Medium");
+        break;
+      case 4:
+        setDifficulty("Hard");
+        break;
+      case 5:
+        setDifficulty("Very Hard");
+        break;
+      default:
+        setDifficulty("Beginner/Unrated");
+    }
   };
   useEffect(showQuestion);
 
@@ -21,21 +40,19 @@ const QuestionComponent = () => {
       {!!singleQuestion ? (
         <>
           <h2>{singleQuestion.name}</h2>
-          <>
-            {singleQuestion.source.toLowerCase() === "codewars" ? (
-              <p className="question"> {singleQuestion.text} </p>
-            ) : (
-              <ReactQuill
-                readOnly="true"
-                theme="bubble"
-                value={singleQuestion.text}
-              />
-            )}
-          </>
-
-          <a href={singleQuestion.link} target="_blank">
-            {`Solve at ${singleQuestion.source}`}
-          </a>
+          <div className="question-details">
+            <p>
+              Difficulty: <span>{difficulty}</span>
+            </p>
+            <a href={singleQuestion.link} target="_blank">
+              {`Solve at ${singleQuestion.source}`}
+            </a>
+          </div>
+          <ReactQuill
+            readOnly="true"
+            theme="bubble"
+            value={singleQuestion.text}
+          />
         </>
       ) : (
         "Loading"

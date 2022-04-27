@@ -1,0 +1,13 @@
+.questions-list {
+    display:flex;
+    flex-direction: column;
+}
+
+a.question-link {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover.question-link  {
+    font-size: 1.2em;
+}

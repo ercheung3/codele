@@ -44,8 +44,6 @@ const NewQuestionComponent = (props) => {
 
   return (
     <>
-      <h3>New Question</h3>
-
       {isActive ? (
         <div id="new-question-form-container">
           <CloseButton className="close-button" onClick={toggleIsActive} />

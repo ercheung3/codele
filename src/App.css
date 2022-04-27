@@ -2,3 +2,7 @@ nav {
   border-bottom: solid 1px black;
   padding-bottom: 1rem;
 }
+
+li {
+  text-decoration: none;
+}
