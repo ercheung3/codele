@@ -41,17 +41,7 @@ const DailyQuestionComponent = (props) => {
     <div>
       <Button onClick={changeDate}>Change Question</Button>
       {!!dailyQuestion ? (
-        <>
-          {dailyQuestion.source.toLowerCase() === "codewars" ? (
-            <div className="daily-question question">{dailyQuestion.text}</div>
-          ) : (
-            <ReactQuill
-              readOnly="true"
-              theme="bubble"
-              value={dailyQuestion.text}
-            />
-          )}
-        </>
+        <ReactQuill readOnly="true" theme="bubble" value={dailyQuestion.text} />
       ) : (
         <Button onClick={selectDailyQuestion}>Show Question</Button>
       )}

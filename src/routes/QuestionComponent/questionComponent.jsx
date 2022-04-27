@@ -21,18 +21,11 @@ const QuestionComponent = () => {
       {!!singleQuestion ? (
         <>
           <h2>{singleQuestion.name}</h2>
-          <>
-            {singleQuestion.source.toLowerCase() === "codewars" ? (
-              <p className="question"> {singleQuestion.text} </p>
-            ) : (
-              <ReactQuill
-                readOnly="true"
-                theme="bubble"
-                value={singleQuestion.text}
-              />
-            )}
-          </>
-
+          <ReactQuill
+            readOnly="true"
+            theme="bubble"
+            value={singleQuestion.text}
+          />
           <a href={singleQuestion.link} target="_blank">
             {`Solve at ${singleQuestion.source}`}
           </a>
