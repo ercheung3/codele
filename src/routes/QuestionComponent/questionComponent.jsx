@@ -5,15 +5,16 @@ import ReactQuill from "react-quill";
 
 const QuestionComponent = () => {
   let params = useParams();
-  const [questions, createNewQuestion] = useOutletContext();
+  const questions = useOutletContext()[0];
   const [singleQuestion, setSingleQuestion] = useState();
-  const [difficulty, setDifficulty] = useState();
+  const [difficulty, setDifficulty] = useState("Unrated");
+
   const showQuestion = () => {
     const question = questions.filter(
-      (question) => question.id == params.questionId
+      (question) => parseInt(question.id) === parseInt(params.questionId)
     );
     setSingleQuestion(question[0]);
-    switch (singleQuestion.difficulty) {
+    switch (question[0].difficulty) {
       case 1:
         setDifficulty("Very Easy");
         break;
@@ -44,7 +45,7 @@ const QuestionComponent = () => {
             <p>
               Difficulty: <span>{difficulty}</span>
             </p>
-            <a href={singleQuestion.link} target="_blank">
+            <a href={singleQuestion.link} target="_blank" rel="noreferrer">
               {`Solve at ${singleQuestion.source}`}
             </a>
           </div>

@@ -1,11 +1,11 @@
 import "./App.css";
-import { Outlet, Link, useOutletContext } from "react-router-dom";
+import { Outlet, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 function App() {
   const [questions, setQuestions] = useState([]);
 
   const websiteURL = "http://localhost:8000/api/question";
-  const codewarsapi = "https://www.codewars.com/api/v1/code-challenges/";
+  //const codewarsapi = "https://www.codewars.com/api/v1/code-challenges/";
 
   const getQuestions = async () => {
     try {

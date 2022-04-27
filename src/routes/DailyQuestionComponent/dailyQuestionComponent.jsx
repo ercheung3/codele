@@ -2,13 +2,13 @@ import "./dailyQuestionComponent.css";
 import { useOutletContext } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "react-quill/dist/quill.bubble.css";
 
 const DailyQuestionComponent = (props) => {
-  const [questions, createNewQuestion] = useOutletContext();
+  const questions = useOutletContext()[0];
+
   const [dailyQuestion, setDailyQuestion] = useState();
 
   const [currDate, setCurrDate] = useState(new Date());
@@ -35,7 +35,7 @@ const DailyQuestionComponent = (props) => {
     selectDailyQuestion();
   };
 
-  useEffect(selectDailyQuestion, []);
+  useEffect(selectDailyQuestion);
 
   return (
     <div>

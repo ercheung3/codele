@@ -15,12 +15,8 @@ const QuestionsComponent = () => {
       <ol className="questions-list">
         {questions.map((question) => {
           return (
-            <li>
-              <Link
-                to={`${question.id}`}
-                key={`${question.source}-${question.id}`}
-                className="question-link"
-              >
+            <li key={`${question.source}-${question.id}`}>
+              <Link to={`${question.id}`} className="question-link">
                 {question.name}
               </Link>
             </li>
