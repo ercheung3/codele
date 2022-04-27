@@ -9,14 +9,19 @@ const QuestionsComponent = () => {
       <NewQuestionComponent
         createNewQuestion={createNewQuestion}
       ></NewQuestionComponent>
-      {questions.map((question) => {
-        return (
-          <Link to={`${question.id}`} key={`${question.source}-${question.id}`}>
-            {question.name}
-          </Link>
-        );
-      })}
       <Outlet context={[questions]} />
+      <ul>
+        {questions.map((question) => {
+          return (
+            <Link
+              to={`${question.id}`}
+              key={`${question.source}-${question.id}`}
+            >
+              {question.name}
+            </Link>
+          );
+        })}
+      </ul>
     </div>
   );
 };

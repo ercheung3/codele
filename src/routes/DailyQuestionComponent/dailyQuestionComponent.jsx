@@ -5,32 +5,41 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import "react-quill/dist/quill.bubble.css";
 
 const DailyQuestionComponent = (props) => {
   const [questions, createNewQuestion] = useOutletContext();
   const [dailyQuestion, setDailyQuestion] = useState();
+
+  const [currDate, setCurrDate] = useState(new Date());
+  //Base Date is May 2nd, 2022
+  const baseDate = new Date(2022, 4, 2);
+
   const selectDailyQuestion = () => {
-    //ADD LOGIC TO SELECT NEW QUESTION BASED ON TIME:DAY
-    //Math.random()
-    //HOW TO KNOW THE QUESTION IS THE DAILY QUESTION?
-    //IS IT FROM QUESTIONS MODEL
-    //OR FROM STATE
-    //IF STATE THEN WHAT HAPPENS ON REFRESH?
-    //IF MODEL THEN SHOULD I MAKE A BOOLEAN CALLED DAILY
-    //THAT CHANGES FROM USE EFFECT?
-    //MAYBE INT DAILY
-    //PRESET 30 days? and within useEffect, set it
-    console.log("This will run every 10 second!");
-    let questionIndex = parseInt(Math.random() * questions.length);
-    console.log("Question Index: " + questionIndex);
-    console.log(!!dailyQuestion);
+    const hash =
+      (currDate.getMonth() - baseDate.getMonth()) * 30 +
+      Math.abs(currDate.getDay() - baseDate.getDay());
+
+    //Before the release of the app
+    let questionIndex;
+    if (hash <= 0) questionIndex = 0;
+    else questionIndex = hash % questions.length;
     setDailyQuestion(questions[questionIndex]);
   };
+
+  const changeDate = () => {
+    let newDate = new Date(currDate);
+    newDate.setDate(newDate.getDate() + 1);
+    setCurrDate(newDate);
+    //console.log(currDate);
+    selectDailyQuestion();
+  };
+
   useEffect(selectDailyQuestion, []);
 
   return (
     <div>
-      <h2>DAILY QUESTION</h2>
+      <Button onClick={changeDate}>Change Question</Button>
       {!!dailyQuestion ? (
         <>
           {dailyQuestion.source.toLowerCase() === "codewars" ? (
@@ -38,7 +47,7 @@ const DailyQuestionComponent = (props) => {
           ) : (
             <ReactQuill
               readOnly="true"
-              theme="snow"
+              theme="bubble"
               value={dailyQuestion.text}
             />
           )}

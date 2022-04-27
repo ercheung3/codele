@@ -27,7 +27,7 @@ const QuestionComponent = () => {
             ) : (
               <ReactQuill
                 readOnly="true"
-                theme="snow"
+                theme="bubble"
                 value={singleQuestion.text}
               />
             )}

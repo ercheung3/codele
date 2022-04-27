@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./newQuestionComponent.css";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import sanitizeHtml from "sanitize-html";
 
 const NewQuestionComponent = (props) => {
   const [isActive, setIsActive] = useState(false);
@@ -22,7 +23,8 @@ const NewQuestionComponent = (props) => {
 
   const handleQuillChange = (e) => {
     console.log(e);
-    newQuestion.text = e;
+    newQuestion.text = sanitizeHtml(e);
+    console.log(`Sanitized: ${newQuestion.text}`);
   };
 
   const submitNewQuestion = (e) => {
