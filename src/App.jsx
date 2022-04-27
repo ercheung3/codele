@@ -35,6 +35,58 @@ function App() {
     }
   };
 
+  /**
+   * @name updateQuestion
+   * @description Sends an API response to update specific question with idToUpdate
+   * @param {String} idToUpdate
+   * @param {Object} questionToUpdate
+   * @returns null
+   */
+  const updateQuestion = async (idToUpdate, questionToUpdate) => {
+    const apiResponse = await fetch(`${websiteURL}/${idToUpdate}`, {
+      method: "PUT",
+      body: JSON.stringify(questionToUpdate),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const parsedResponse = await apiResponse.json();
+    if (apiResponse.status === 200) {
+      //Simple one line to add updated item
+      const newQuestions = questions.map((question) =>
+        question.id === idToUpdate ? questionToUpdate : question
+      );
+      setQuestions(newQuestions);
+    } else {
+      console.log(parsedResponse);
+    }
+  };
+
+  /**
+   * @name deleteQuestion
+   * @description Sends API response to delete an specific question with idToDelete
+   *
+   * @param {String} idToDelete
+   * @returns null
+   */
+  const deleteQuestion = async (idToDelete) => {
+    const apiResponse = await fetch(`${websiteURL}/${idToDelete}`, {
+      method: "DELETE",
+    });
+    if (apiResponse.status === 204) {
+      //Simple one line to delete a single item
+      const newQuestions = questions.filter(
+        (question) => question.id !== idToDelete
+      );
+
+      //Set state with new items
+      setQuestions(newQuestions);
+    } else {
+      console.log(apiResponse);
+    }
+    //TODO: Handle unsuccessful delete
+  };
+
   useEffect(getQuestions, []);
   return (
     <div className="App">
@@ -44,7 +96,9 @@ function App() {
         {/*<Link to="/daily">Daily</Link>*/}
         <Link to="/questions">Questions</Link>
       </nav>
-      <Outlet context={[questions, createNewQuestion]} />
+      <Outlet
+        context={[questions, createNewQuestion, updateQuestion, deleteQuestion]}
+      />
     </div>
   );
 }

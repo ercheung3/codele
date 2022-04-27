@@ -3,7 +3,8 @@ import NewQuestionComponent from "./NewQuestionComponent/newQuestionComponent";
 import "./questionsComponent.css";
 
 const QuestionsComponent = () => {
-  const [questions, createNewQuestion] = useOutletContext();
+  const questions = useOutletContext()[0];
+  const createNewQuestion = useOutletContext()[1];
 
   return (
     <div>
