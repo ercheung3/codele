@@ -41,7 +41,7 @@ function App() {
       <h1>Codele</h1>
       <nav>
         <Link to="/">Home</Link>
-        <Link to="/daily">Daily</Link>
+        {/*<Link to="/daily">Daily</Link>*/}
         <Link to="/questions">Questions</Link>
       </nav>
       <Outlet context={[questions, createNewQuestion]} />
