@@ -41,11 +41,26 @@ const DailyQuestionComponent = (props) => {
     <div>
       {!!dailyQuestion ? (
         <>
-          <ReactQuill
-            readOnly="true"
-            theme="bubble"
-            value={dailyQuestion.text}
-          />
+          <div className="codele-container">
+            <div className="code-container">
+              <h2>{dailyQuestion.name}</h2>
+              <div className="question-details">
+                <p>
+                  Difficulty: <span>{dailyQuestion.difficulty}</span>
+                </p>
+                <a href={dailyQuestion.link} target="_blank" rel="noreferrer">
+                  {`Solve at ${dailyQuestion.source}`}
+                </a>
+              </div>
+              <ReactQuill
+                className="daily-quill"
+                readOnly="true"
+                theme="bubble"
+                value={dailyQuestion.text}
+              />
+            </div>
+            <ReactQuill className="daily-quill daily-code-quill" theme="snow" />
+          </div>
           <Button onClick={changeDate}>Change Question</Button>
         </>
       ) : (

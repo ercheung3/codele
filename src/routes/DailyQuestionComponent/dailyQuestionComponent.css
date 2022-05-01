@@ -1,5 +1,29 @@
 .daily-question {
     display: block;
     white-space: pre-line;
-    font-size:2em;
+    
+}
+
+.daily-quill {
+    min-height: 40vh;
+    min-width: 50%;
+    
+}
+
+.daily-code-quill {
+    padding: 1vw;
+}
+
+.ql-editor {
+    font-size:1.4em;
+}
+.codele-container {
+    display: flex;
+}
+
+.code-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+    min-width: 50%;
 }
