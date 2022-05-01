@@ -22,15 +22,18 @@ const NewQuestionComponent = (props) => {
   };
 
   const handleQuillChange = (e) => {
-    console.log(e);
-    newQuestion.text = sanitizeHtml(e);
-    console.log(`Sanitized: ${newQuestion.text}`);
+    //console.log(e);
+    setNewQuestion({
+      ...newQuestion,
+      text: sanitizeHtml(e),
+    });
+    //console.log(`Sanitized: ${newQuestion.text}`);
   };
 
   const submitNewQuestion = (e) => {
     e.preventDefault();
     props.createNewQuestion(newQuestion);
-    console.log(newQuestion);
+    //console.log(newQuestion);
     setNewQuestion({
       //Change Question State
       name: "",

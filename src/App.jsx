@@ -1,22 +1,17 @@
 import "./App.css";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 function App() {
   const [questions, setQuestions] = useState([]);
-
+  let navigate = useNavigate();
+  let location = useLocation();
   const websiteURL = "http://localhost:8000/api/question";
   //const codewarsapi = "https://www.codewars.com/api/v1/code-challenges/";
 
   const getQuestions = async () => {
-    try {
-      const questions = await fetch(`${websiteURL}`);
-      const parsedQuestions = await questions.json();
-      setQuestions(parsedQuestions);
-      console.log(questions);
-      console.log(parsedQuestions);
-    } catch (err) {
-      console.log(err);
-    }
+    const questions = await fetch(`${websiteURL}`);
+    const parsedQuestions = await questions.json();
+    setQuestions(parsedQuestions);
   };
 
   const createNewQuestion = async (newQuestion) => {
@@ -43,7 +38,6 @@ function App() {
    * @returns null
    */
   const updateQuestion = async (idToUpdate, questionToUpdate) => {
-    console.log("EDITING: " + idToUpdate + ", " + questionToUpdate);
     const apiResponse = await fetch(`${websiteURL}/${idToUpdate}`, {
       method: "PUT",
       body: JSON.stringify(questionToUpdate),
@@ -52,7 +46,6 @@ function App() {
       },
     });
     const parsedResponse = await apiResponse.json();
-    console.log(parsedResponse);
     if (apiResponse.status === 200) {
       //Simple one line to add updated item
       const newQuestions = questions.map((question) =>
@@ -72,8 +65,6 @@ function App() {
    * @returns null
    */
   const deleteQuestion = async (idToDelete) => {
-    console.log("DELETING");
-    /*
     const apiResponse = await fetch(`${websiteURL}/${idToDelete}`, {
       method: "DELETE",
     });
@@ -85,13 +76,16 @@ function App() {
 
       //Set state with new items
       setQuestions(newQuestions);
+      navigate("/questions");
     } else {
       console.log(apiResponse);
     }
-    */
   };
 
-  useEffect(getQuestions, []);
+  useEffect(() => {
+    getQuestions();
+  }, [location]);
+
   return (
     <div className="App">
       <h1>Codele</h1>
