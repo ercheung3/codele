@@ -58,7 +58,7 @@ const NewQuestionComponent = (props) => {
               ></input>
               <ReactQuill
                 theme="snow"
-                value={newQuestion.text}
+                defaultValue={newQuestion.text}
                 onChange={handleQuillChange}
                 placeholder="Question"
               />

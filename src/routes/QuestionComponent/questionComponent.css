@@ -7,3 +7,28 @@
     display: flex;
     gap: 1vw;
 }
+.edit-question-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+
+.question-container {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+
+#edit-question-form-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 80vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.question-container .quill {
+    min-width: 70vw;
+    min-height: 50vh;
+    border: 1px solid black;
+}

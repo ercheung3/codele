@@ -3,8 +3,8 @@ import NewQuestionComponent from "./NewQuestionComponent/newQuestionComponent";
 import "./questionsComponent.css";
 
 const QuestionsComponent = () => {
-  const questions = useOutletContext()[0];
-  const createNewQuestion = useOutletContext()[1];
+  const [questions, createNewQuestion, updateQuestion, deleteQuestion] =
+    useOutletContext();
 
   return (
     <div>
@@ -12,7 +12,7 @@ const QuestionsComponent = () => {
       <NewQuestionComponent
         createNewQuestion={createNewQuestion}
       ></NewQuestionComponent>
-      <Outlet context={[questions]} />
+      <Outlet context={[questions, updateQuestion, deleteQuestion]} />
       <ol className="questions-list">
         {questions.map((question) => {
           return (

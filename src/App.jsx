@@ -43,6 +43,7 @@ function App() {
    * @returns null
    */
   const updateQuestion = async (idToUpdate, questionToUpdate) => {
+    console.log("EDITING: " + idToUpdate + ", " + questionToUpdate);
     const apiResponse = await fetch(`${websiteURL}/${idToUpdate}`, {
       method: "PUT",
       body: JSON.stringify(questionToUpdate),
@@ -51,6 +52,7 @@ function App() {
       },
     });
     const parsedResponse = await apiResponse.json();
+    console.log(parsedResponse);
     if (apiResponse.status === 200) {
       //Simple one line to add updated item
       const newQuestions = questions.map((question) =>
@@ -70,6 +72,8 @@ function App() {
    * @returns null
    */
   const deleteQuestion = async (idToDelete) => {
+    console.log("DELETING");
+    /*
     const apiResponse = await fetch(`${websiteURL}/${idToDelete}`, {
       method: "DELETE",
     });
@@ -84,7 +88,7 @@ function App() {
     } else {
       console.log(apiResponse);
     }
-    //TODO: Handle unsuccessful delete
+    */
   };
 
   useEffect(getQuestions, []);
