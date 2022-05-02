@@ -92,7 +92,7 @@ function App() {
 
   useEffect(() => {
     getQuestions();
-  }, [location]);
+  }, []);
 
   return (
     <div className="App">
