@@ -1,14 +1,9 @@
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 
-const HomeComponent = () => {
-  const [isModalActive, setIsModalActive] = useState(true);
-  const toggleIsModalActive = () => {
-    setIsModalActive(!isModalActive);
-  };
-
+const HomeComponent = (props) => {
   return (
-    <Modal show={isModalActive} onHide={toggleIsModalActive}>
+    <Modal show={props.isModalActive} onHide={props.toggleIsModalActive}>
       <Modal.Header closeButton>
         <Modal.Title>Codele</Modal.Title>
       </Modal.Header>

@@ -27,3 +27,11 @@
     padding: 1vw;
     min-width: 50%;
 }
+
+#change-button {
+    margin: 1vw;
+}
+
+h3 {
+    text-decoration: underline;
+}

@@ -5,9 +5,18 @@
 
 a.question-link {
     text-decoration: none;
-    color: black;
+    color: #0C1940;
 }
 
 a:hover.question-link  {
+    font-size: 1.2em;
+    color: rgb(14, 14, 163);
+}
+
+.questions-list-info {
+    margin: 1vw;
+}
+
+ol li {
     font-size: 1.2em;
 }

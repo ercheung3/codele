@@ -1,12 +1,19 @@
 import "./App.css";
 import { Outlet, Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import HeaderComponent from "./components/HeaderComponent/headerComponent";
+import HomeComponent from "./components/HomeComponent/homeComponent";
 function App() {
   const [questions, setQuestions] = useState([]);
   let navigate = useNavigate();
   let location = useLocation();
   const websiteURL = "http://localhost:8000/api/question";
   //const codewarsapi = "https://www.codewars.com/api/v1/code-challenges/";
+
+  const [isModalActive, setIsModalActive] = useState(true);
+  const toggleIsModalActive = () => {
+    setIsModalActive(!isModalActive);
+  };
 
   const getQuestions = async () => {
     const questions = await fetch(`${websiteURL}`);
@@ -88,12 +95,14 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Codele</h1>
-      <nav>
-        <Link to="/">Home</Link>
-        {/*<Link to="/daily">Daily</Link>*/}
-        <Link to="/questions">Questions</Link>
-      </nav>
+      <HeaderComponent
+        isModalActive={isModalActive}
+        toggleIsModalActive={toggleIsModalActive}
+      ></HeaderComponent>
+      <HomeComponent
+        isModalActive={isModalActive}
+        toggleIsModalActive={toggleIsModalActive}
+      ></HomeComponent>
       <Outlet
         context={[questions, createNewQuestion, updateQuestion, deleteQuestion]}
       />

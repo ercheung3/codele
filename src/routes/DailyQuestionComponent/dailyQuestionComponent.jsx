@@ -43,7 +43,7 @@ const DailyQuestionComponent = (props) => {
         <>
           <div className="codele-container">
             <div className="code-container">
-              <h2>{dailyQuestion.name}</h2>
+              <h3>{dailyQuestion.name}</h3>
               <div className="question-details">
                 <p>
                   Difficulty: <span>{dailyQuestion.difficulty}</span>
@@ -61,7 +61,9 @@ const DailyQuestionComponent = (props) => {
             </div>
             <ReactQuill className="daily-quill daily-code-quill" theme="snow" />
           </div>
-          <Button onClick={changeDate}>Change Question</Button>
+          <Button id="change-button" onClick={changeDate}>
+            Change Question
+          </Button>
         </>
       ) : (
         <Button onClick={selectDailyQuestion}>Show Question</Button>

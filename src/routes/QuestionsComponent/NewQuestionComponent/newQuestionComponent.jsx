@@ -51,35 +51,35 @@ const NewQuestionComponent = (props) => {
         <div id="new-question-form-container">
           <CloseButton className="close-button" onClick={toggleIsActive} />
           <form className="new-question-form" onSubmit={submitNewQuestion}>
-            <div className="form-inputs">
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="name"
-                value={newQuestion.name}
-                placeholder="Question Name"
-              ></input>
-              <ReactQuill
-                theme="snow"
-                defaultValue={newQuestion.text}
-                onChange={handleQuillChange}
-                placeholder="Question"
-              />
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="source"
-                value={newQuestion.source}
-                placeholder="Question Source"
-              ></input>
-              <input
-                onChange={handleInputChange}
-                type="text"
-                name="link"
-                value={newQuestion.link}
-                placeholder="Question Link"
-              ></input>
-              <label htmlFor="difficulty">Difficulty(0 to 5):</label>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              name="name"
+              value={newQuestion.name}
+              placeholder="Question Name"
+            ></input>
+            <ReactQuill
+              theme="snow"
+              defaultValue={newQuestion.text}
+              onChange={handleQuillChange}
+              placeholder="Question"
+            />
+            <input
+              onChange={handleInputChange}
+              type="text"
+              name="source"
+              value={newQuestion.source}
+              placeholder="Question Source"
+            ></input>
+            <input
+              onChange={handleInputChange}
+              type="text"
+              name="link"
+              value={newQuestion.link}
+              placeholder="Question Link"
+            ></input>
+            <div>
+              <label htmlFor="difficulty">Difficulty(0 to 5): </label>
               <input
                 id="difficulty"
                 onChange={handleInputChange}

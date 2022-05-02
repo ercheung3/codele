@@ -8,10 +8,13 @@ const QuestionsComponent = () => {
 
   return (
     <div>
-      <h2>ALL QUESTIONS</h2>
-      <NewQuestionComponent
-        createNewQuestion={createNewQuestion}
-      ></NewQuestionComponent>
+      <div className="questions-list-info">
+        <h2>Questions List</h2>
+        <NewQuestionComponent
+          createNewQuestion={createNewQuestion}
+        ></NewQuestionComponent>
+      </div>
+
       <Outlet context={[questions, updateQuestion, deleteQuestion]} />
       <ol className="questions-list">
         {questions.map((question) => {

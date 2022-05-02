@@ -17,7 +17,6 @@ render(
           path=""
           element={
             <>
-              <HomeComponent />
               <DailyQuestionComponent />
             </>
           }
