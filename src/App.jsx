@@ -7,6 +7,7 @@ function App() {
   const [questions, setQuestions] = useState([]);
   let navigate = useNavigate();
   let location = useLocation();
+  console.log(location);
   //const websiteURL = "http://localhost:8000/api/question";
   const websiteURL = "https://codele-backend.herokuapp.com/api/question";
   //const codewarsapi = "https://www.codewars.com/api/v1/code-challenges/";
@@ -90,9 +91,7 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getQuestions();
-  }, []);
+  useEffect(getQuestions, []);
 
   return (
     <div className="App">
