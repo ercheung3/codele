@@ -20,7 +20,7 @@ const QuestionComponent = () => {
   const [difficulty, setDifficulty] = useState("Unrated");
   const [isEditModalActive, setIsEditModalActive] = useState(false);
   const toggleIsEditModalActive = () => {
-    console.log(isEditModalActive);
+    //console.log(isEditModalActive);
     setIsEditModalActive(!isEditModalActive);
   };
 
